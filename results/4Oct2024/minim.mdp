@@ -1,0 +1,10 @@
+
+        integrator = steep
+        emtol = 1000.0
+        nsteps = 50000
+        nstenergy = 10
+        coulombtype = PME
+        rlist = 1.2
+        rcoulomb = 1.2
+        rvdw = 1.2
+        

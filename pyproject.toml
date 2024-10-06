@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "MolecularDynamics"
+version = "0.1.0"
+description = "Repo to play with molecular dynamics simulations"
+authors = ["Josh Goldford <josh@dayhofflabs.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+biopython = "^1.84"
+
+[tool.poetry.group.pypirate.dependencies]
+#dayhoff-tools = {version = "*", source = "pypirate"}
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+colorlog = "^6.8.2"
+dvc = "^3.48.2"
+dvc-gs = "^3.0.1"
+flake8 = "^7.0.0"
+isort = "^5.13.2"
+pylance = "^0.10.2"
+pylint = "^3.1.0"
+pytest = "^8.0.2"
+pytest-cov = "^4.1.0"
+pytest-mock = "^3.12.0"
+questionary = "^2.0.1"
+
+[tool.poetry.group.reserved.dependencies]
+torch = "2.0.0+cu118"
+torchvision = "0.15.1+cu118"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "pypirate"
+url = "https://us-central1-python.pkg.dev/enzyme-discovery/pypirate/simple/"
+priority = "supplemental"

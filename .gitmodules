@@ -1,0 +1,8 @@
+[submodule ".devcontainer"]
+	path = .devcontainer
+	url = https://github.com/dayhofflabs/chassis
+	branch = main
+[submodule "warehouse"]
+	path = warehouse
+	url = https://github.com/dayhofflabs/warehouse
+	branch = main

@@ -1,0 +1,45 @@
+name: Run Pytest
+
+on:
+  pull_request:
+    branches:
+      - "main"
+  schedule:
+    - cron: "0 4 * * *"  # This runs the tests at 4 each day on the main branch
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.10.13
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10.13'
+
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+        export_environment_variables: true
+
+    - name: Install dependencies
+      run: |
+        pip install --upgrade pip
+        pip install --no-cache-dir -r .github/workflows/deps_for_github_actions.txt
+        pip install --no-cache-dir keyring
+        pip install --no-cache-dir keyrings.google-artifactregistry-auth
+        pip install --upgrade dayhoff-tools --index-url https://us-central1-python.pkg.dev/enzyme-discovery/pypirate/simple/
+
+    - name: Check code formatting with black
+      run: |
+        pip install black
+        black . --check
+
+    - name: Test with pytest + cov
+      run: |
+        pip install pytest pytest-cov pytest-mock
+        pytest --cov=. --cov-report=term --cov-report=xml

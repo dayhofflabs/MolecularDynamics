@@ -1,0 +1,9 @@
+
+        integrator = md
+        nsteps = 50000
+        dt = 0.002
+        tcoupl = Berendsen
+        tc-grps = Protein Water_and_ions
+        tau_t = 0.1
+        ref_t = 300
+        
