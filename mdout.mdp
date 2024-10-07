@@ -2,7 +2,7 @@
 ;	File 'mdout.mdp' was generated
 ;	By user: unknown (0)
 ;	On host: 1a99038fbca8
-;	At date: Sun Oct  6 22:40:29 2024
+;	At date: Mon Oct  7 00:17:17 2024
 ;
 ;	Created by:
 ;	               :-) GROMACS - gmx grompp, 2024.3-conda_forge (-:
@@ -11,7 +11,7 @@
 ;	Data prefix:  /opt/conda
 ;	Working dir:  /workspaces/MolecularDynamics
 ;	Command line:
-;	  gmx grompp -f results/4Oct2024/ions.mdp -c results/4Oct2024/solvated.gro -p results/4Oct2024/topol.top -o results/4Oct2024/ions.tpr -maxwarn 2
+;	  gmx grompp -f results/amber/minim.mdp -c results/amber/solvated.gro -p results/amber/topol.top -o results/amber/ions.tpr -maxwarn 2
 
 ; VARIOUS PREPROCESSING OPTIONS
 ; Preprocessor information: use cpp syntax.
@@ -69,7 +69,7 @@ nstfout                  = 0
 ; Output frequency for energies to log file and energy file
 nstlog                   = 1000
 nstcalcenergy            = 100
-nstenergy                = 10
+nstenergy                = 1000
 ; Output frequency and precision for .xtc file
 nstxout-compressed       = 0
 compressed-x-precision   = 1000
@@ -78,7 +78,7 @@ compressed-x-precision   = 1000
 ; default, all atoms will be written.
 compressed-x-grps        = 
 ; Selection of energy groups
-energygrps               = 
+energygrps               = System
 
 ; NEIGHBORSEARCHING PARAMETERS
 ; cut-off scheme (Verlet: particle based cut-offs)
@@ -94,7 +94,7 @@ verlet-buffer-tolerance  = 0.005
 ; Allowed error in the average pressure due to the Verlet buffer for LJ interactions
 verlet-buffer-pressure-tolerance = 0.5
 ; nblist cut-off        
-rlist                    = 1.2
+rlist                    = 1
 ; long-range cut-off for switched potentials
 
 ; OPTIONS FOR ELECTROSTATICS AND VDW
@@ -102,7 +102,7 @@ rlist                    = 1.2
 coulombtype              = PME
 coulomb-modifier         = Potential-shift-Verlet
 rcoulomb-switch          = 0
-rcoulomb                 = 1.2
+rcoulomb                 = 1.0
 ; Relative dielectric constant for the medium and the reaction field
 epsilon-r                = 1
 epsilon-rf               = 0
@@ -111,7 +111,7 @@ vdw-type                 = Cut-off
 vdw-modifier             = Potential-shift-Verlet
 ; cut-off lengths       
 rvdw-switch              = 0
-rvdw                     = 1.2
+rvdw                     = 1.0
 ; Apply long range dispersion corrections for Energy and Pressure
 DispCorr                 = No
 ; Extension of the potential lookup tables beyond the cut-off
@@ -175,7 +175,7 @@ annealing-temp           =
 ; GENERATE VELOCITIES FOR STARTUP RUN
 gen-vel                  = no
 gen-temp                 = 300
-gen-seed                 = 1000334046
+gen-seed                 = -545656869
 
 ; OPTIONS FOR BONDS    
 constraints              = none
